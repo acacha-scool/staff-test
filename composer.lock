@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "/home/sergi/Code/acacha-scool/staff/staff",
-                "reference": "7efbf9f8a178bc603ff69e9c9b7ec1bacac5c1f4",
+                "reference": "cc9224884ff62560d072941beda78e8356125642",
                 "shasum": null
             },
             "require": {
@@ -3296,7 +3296,7 @@
             "dist": {
                 "type": "path",
                 "url": "/home/sergi/Code/acacha-scool/curriculum/curriculum",
-                "reference": "dae88bfd14721eadf54b921ae1f5be9007e29c95",
+                "reference": "99ae1010cf3f4b26dc5229b7155f49228b45e2e7",
                 "shasum": null
             },
             "require": {
@@ -3315,6 +3315,11 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Scool\\Curriculum\\Providers\\CurriculumServiceProvider"
+                    ]
                 }
             },
             "autoload": {
