@@ -15,7 +15,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('assign-user-to-teacher', require('./components/teachers/AssignUserToTeacher.vue'));
+Vue.component('teachers-chooser', require('./components/teachers/TeachersChooser.vue'));
+Vue.component('users-chooser', require('./components/users/UsersChooser.vue'));
 
 const app = new Vue({
     el: '#app'
