@@ -1,7 +1,12 @@
 {
     "version": 2,
     "paths": [
+        "/home/sergi/Code/acacha-scool/curriculum/curriculum",
+        "/home/sergi/Code/acacha-scool/foundation/foundation",
         "/home/sergi/Code/acacha-scool/staff/staff",
+        "/home/sergi/Code/acacha/l5-repository",
+        "/home/sergi/Code/acacha/names",
+        "/home/sergi/Code/acacha/stateful-eloquent",
         "/home/sergi/Code/acacha/users/package",
         "/home/sergi/Code/scool/ebre_escool_model"
     ]
