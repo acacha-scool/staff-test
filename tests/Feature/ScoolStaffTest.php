@@ -160,7 +160,7 @@ class ScoolStaffTest extends TestCase
 
     /**
      * Api show an user for authorized users correctly without pagination.
-     *
+     * @group prova
      * @test
      */
     public function api_show_an_user_for_authorized_users_correctly_without_pagination()
