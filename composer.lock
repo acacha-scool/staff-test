@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f8170ba6f205cfa1da1247030834d77",
+    "content-hash": "ddd85a67488179759e167af5daa5e9f9",
     "packages": [
         {
             "name": "acacha-scool/staff",
@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "/home/sergi/Code/acacha-scool/staff/staff",
-                "reference": "cc9224884ff62560d072941beda78e8356125642",
+                "reference": "6fd0371cf5a5cb35e9c3146adf8364898e6c77fb",
                 "shasum": null
             },
             "require": {
@@ -451,7 +451,7 @@
             },
             "require": {
                 "acacha/stateful-eloquent": "dev-master",
-                "laravel/passport": "^2.0",
+                "laravel/passport": "^4.0",
                 "php": "~5.6|~7.0",
                 "predis/predis": "^1.1",
                 "pulkitjalan/google-apiclient": "^3.1",
@@ -1327,16 +1327,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.21",
+            "version": "v0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client-services.git",
-                "reference": "b8282036684f2989e820b7830e8270f337304f23"
+                "reference": "f3cc7456ec878086ee6b53591e979a022e24ac27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/b8282036684f2989e820b7830e8270f337304f23",
-                "reference": "b8282036684f2989e820b7830e8270f337304f23",
+                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/f3cc7456ec878086ee6b53591e979a022e24ac27",
+                "reference": "f3cc7456ec878086ee6b53591e979a022e24ac27",
                 "shasum": ""
             },
             "require": {
@@ -1360,7 +1360,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2017-08-28T00:23:45+00:00"
+            "time": "2017-09-02T00:25:09+00:00"
         },
         {
             "name": "google/auth",
@@ -1920,16 +1920,16 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v2.0.11",
+            "version": "v4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "1e6f56ccf42255e8479d0dcd695619dab6613313"
+                "reference": "9d7bb2a830fd4adbd46d44b8174b674894e15efd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/1e6f56ccf42255e8479d0dcd695619dab6613313",
-                "reference": "1e6f56ccf42255e8479d0dcd695619dab6613313",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/9d7bb2a830fd4adbd46d44b8174b674894e15efd",
+                "reference": "9d7bb2a830fd4adbd46d44b8174b674894e15efd",
                 "shasum": ""
             },
             "require": {
@@ -1943,7 +1943,7 @@
                 "illuminate/encryption": "~5.4",
                 "illuminate/http": "~5.4",
                 "illuminate/support": "~5.4",
-                "league/oauth2-server": "~5.0",
+                "league/oauth2-server": "^6.0",
                 "php": ">=5.6.4",
                 "phpseclib/phpseclib": "^2.0",
                 "symfony/psr-http-message-bridge": "~1.0",
@@ -1956,7 +1956,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "4.0-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1985,7 +1985,7 @@
                 "oauth",
                 "passport"
             ],
-            "time": "2017-06-14T21:58:27+00:00"
+            "time": "2017-08-28T21:36:09+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -2243,16 +2243,16 @@
         },
         {
             "name": "league/oauth2-server",
-            "version": "5.1.5",
+            "version": "6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-server.git",
-                "reference": "8e5df6d6286d0010861a708b70f00345d074bce9"
+                "reference": "925776958fc3f5278e74363663c20147af32b668"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/8e5df6d6286d0010861a708b70f00345d074bce9",
-                "reference": "8e5df6d6286d0010861a708b70f00345d074bce9",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/925776958fc3f5278e74363663c20147af32b668",
+                "reference": "925776958fc3f5278e74363663c20147af32b668",
                 "shasum": ""
             },
             "require": {
@@ -2261,7 +2261,7 @@
                 "lcobucci/jwt": "^3.1",
                 "league/event": "^2.1",
                 "paragonie/random_compat": "^2.0",
-                "php": ">=5.5.9",
+                "php": ">=5.6.0",
                 "psr/http-message": "^1.0"
             },
             "replace": {
@@ -2269,19 +2269,10 @@
                 "lncd/oauth2": "*"
             },
             "require-dev": {
-                "indigophp/hash-compat": "^1.1",
                 "phpunit/phpunit": "^4.8 || ^5.0",
                 "zendframework/zend-diactoros": "^1.0"
             },
-            "suggest": {
-                "indigophp/hash-compat": "Polyfill for hash_equals function for PHP 5.5"
-            },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-V5-WIP": "5.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "League\\OAuth2\\Server\\": "src/"
@@ -2316,7 +2307,7 @@
                 "secure",
                 "server"
             ],
-            "time": "2017-07-11T06:31:36+00:00"
+            "time": "2017-08-03T15:09:23+00:00"
         },
         {
             "name": "maximebf/debugbar",
@@ -5241,16 +5232,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.7.1",
+            "version": "v1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "15ea9ac619e37009edcda64089e3fa4cc88aa659"
+                "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/15ea9ac619e37009edcda64089e3fa4cc88aa659",
-                "reference": "15ea9ac619e37009edcda64089e3fa4cc88aa659",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
+                "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
                 "shasum": ""
             },
             "require": {
@@ -5300,7 +5291,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2017-09-03T09:38:53+00:00"
+            "time": "2017-09-04T11:05:03+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -6348,14 +6339,14 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "acacha/users": 20,
-        "acacha/stateful-eloquent": 20,
-        "scool/ebre_escool_model": 20,
         "acacha-scool/staff": 20,
-        "scool/curriculum": 20,
-        "scool/foundation": 20,
+        "acacha/l5-repository": 20,
         "acacha/names": 20,
-        "acacha/l5-repository": 20
+        "acacha/stateful-eloquent": 20,
+        "acacha/users": 20,
+        "scool/curriculum": 20,
+        "scool/ebre_escool_model": 20,
+        "scool/foundation": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/tokens', function () {
+        return view('tokens');
+    });
     //    Route::get('/link1', function ()    {
 //        // Uses Auth Middleware
 //    });

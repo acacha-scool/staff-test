@@ -51,14 +51,21 @@
         return `${id} — [${teacher_code} - ${type} - ${name} - ${position} ]`
       },
       fetchTeachers () {
-        this.teachers = [
-          { id: 1, teacher_code : '56', name: '', position: 'Tutor CAS', type: 'Matemàtiques'},
-          { id: 2, teacher_code : '40', name: 'Sergi Tur Badenas', position: 'Coord info.', type: 'Informàtica'},
-          { id: 3, teacher_code : '66', name: '', position: 'Tutor SMX1A', type: 'Informàtica'},
-          { id: 4, teacher_code : '86', name: '', position: 'Tutor 1LCB', type: 'Sanitat'},
-          { id: 5, teacher_code : '16', name: '', position: '', type: 'Castellà'},
-          { id: 6, teacher_code : '06', name: '', position: '', type: 'FOL'}
-        ]
+//        this.teachers = [
+//          { id: 1, teacher_code : '56', name: '', position: 'Tutor CAS', type: 'Matemàtiques'},
+//          { id: 2, teacher_code : '40', name: 'Sergi Tur Badenas', position: 'Coord info.', type: 'Informàtica'},
+//          { id: 3, teacher_code : '66', name: '', position: 'Tutor SMX1A', type: 'Informàtica'},
+//          { id: 4, teacher_code : '86', name: '', position: 'Tutor 1LCB', type: 'Sanitat'},
+//          { id: 5, teacher_code : '16', name: '', position: '', type: 'Castellà'},
+//          { id: 6, teacher_code : '06', name: '', position: '', type: 'FOL'}
+//        ]
+          axios.get('/api/v1/teachers')
+            .then(response => {
+              this.teachers = response.data
+            })
+            .catch(error => {
+              console.log(error)
+            })
       },
       selectDefaultTeacher() {
 //        this.selectedTeacher = { id: 1, teacher_code : '56'}

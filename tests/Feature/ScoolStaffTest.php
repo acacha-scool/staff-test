@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Auth;
 use Illuminate\Support\Facades\App;
+use Tests\Feature\Traits\ChecksURIsAuthorization;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\Traits\CanSignInStaffManagement;
@@ -15,7 +15,7 @@ use Tests\Traits\CanSignInStaffManagement;
  */
 class ScoolStaffTest extends TestCase
 {
-    use DatabaseMigrations, CanSignInStaffManagement;
+    use DatabaseMigrations, CanSignInStaffManagement, ChecksURIsAuthorization;
 
     /**
      * Set up tests.
@@ -25,36 +25,22 @@ class ScoolStaffTest extends TestCase
         parent::setUp();
         App::setLocale('en');
         initialize_staff_management_permissions();
+//        $this->withoutExceptionHandling();
     }
 
     /**
-     * Unauthorized user cannot browse assign_user_to_teacher.
+     * Test authorization for URI /teachers/{id}/user.
      *
      * @test
      * @return void
      */
-    public function unauthorized_user_cannot_browse_assign_user_to_teacher()
+    public function test_authorization_for_uri_assign_user_to_teacher()
     {
-        $response = $this->get('/teachers/{id}/user');
-
-        $response->assertStatus(302);
+        $this->check_authorization_uri('/teachers/{id}/user');
     }
 
     /**
-     * A user cannot browse TODO.
-     *
-     * @test
-     * @return void
-     */
-    public function a_user_cannot_browse_assign_user_to_teacher()
-    {
-        $this->signIn();
-        $response = $this->get('/teachers/{id}/user');
-        $response->assertStatus(403);
-    }
-
-    /**
-     * Authorized user can browse TODO.
+     * Assert view for assign user to teacher
      *
      * @test
      * @return void
@@ -65,6 +51,17 @@ class ScoolStaffTest extends TestCase
             ->get('/teachers/{id}/user');
         $response->assertStatus(200)->assertViewIs('acacha_scool_staff::assign-user-to-teacher');
 //        ->assertViewHas('sda');
+    }
+
+    /**
+     * Test authorization for teachers wizard.
+     *
+     * @test
+     * @return void
+     */
+    public function test_authorization_for_uri_teachers_wizard()
+    {
+        $this->check_authorization_uri('/management/teachers/wizard');
     }
 
     /**
@@ -163,7 +160,7 @@ class ScoolStaffTest extends TestCase
 
     /**
      * Api show an user for authorized users correctly without pagination.
-     * @group failing
+     *
      * @test
      */
     public function api_show_an_user_for_authorized_users_correctly_without_pagination()
@@ -176,7 +173,19 @@ class ScoolStaffTest extends TestCase
                 'data' => [['id',
                 'code',
                 'state',
-                'speciality_id',
+                'speciality' => [
+                    'id',
+                    'code',
+                    'name',
+                    'created_at',
+                    'updated_at'
+                ],
+                'positions' => [[
+                    'id',
+                    'name',
+                    'created_at',
+                    'updated_at'
+                ]],
                 'created_at',
                 'updated_at'
                     ]
@@ -198,7 +207,6 @@ class ScoolStaffTest extends TestCase
     /**
      * Api show an user for authorized users correctly without pagination.
      *
-     * @group failing1
      * @test
      */
     public function api1()
@@ -206,9 +214,20 @@ class ScoolStaffTest extends TestCase
         seed_teachers();
         $this->signInAsStaffManager('api')
             ->json('GET', '/api/v1/teachers?paginate=false')
-            ->dump()
             ->assertStatus(200);
+    }
 
+    /**
+     * Assert view for laravel passport tokens.
+     *
+     * @test
+     * @return void
+     */
+    public function authorized_user_can_browse_laravel_passport_tokens()
+    {
+        $response = $this->signInAsStaffManager()
+            ->get('/tokens');
+        $response->assertStatus(200)->assertViewIs('tokens');
     }
 
 }
