@@ -113,4 +113,103 @@ class ScoolStaffTest extends TestCase
             ]);
     }
 
+    /**
+     * Api show an user for authorized users correctly after seeding.
+     *
+     * @test
+     */
+    public function api_show_an_user_for_authorized_users_correctly_after_seeding()
+    {
+        seed_teachers();
+        $this->signInAsStaffManager('api')
+            ->json('GET', '/api/v1/teachers')
+            ->assertStatus(200)
+            ->assertJson([
+                'current_page' => 1,
+                'data' => [],
+                'from' => 1,
+                'last_page' => 1,
+                'first_page_url' => 'http://localhost/api/v1/teachers?page=1',
+                'next_page_url' => null,
+                'per_page' => 15,
+                'prev_page_url' => null,
+                'to' => 5,
+                'total' => 5
+            ]);
+    }
+
+    /**
+     * Api show an user for authorized users correctly after seeding with structure.
+     *
+     * @test
+     */
+    public function api_show_an_user_for_authorized_users_correctly_after_seeding_with_structure()
+    {
+        seed_teachers();
+        $this->signInAsStaffManager('api')
+            ->json('GET', '/api/v1/teachers')
+            ->assertStatus(200)
+            ->assertJsonStructure([
+                'data' => [[
+                    'id',
+                    'code',
+                    'state',
+                    'speciality_id',
+                    'created_at',
+                    'updated_at'
+                ]]
+            ]);
+    }
+
+    /**
+     * Api show an user for authorized users correctly without pagination.
+     * @group failing
+     * @test
+     */
+    public function api_show_an_user_for_authorized_users_correctly_without_pagination()
+    {
+        seed_teachers();
+        $this->signInAsStaffManager('api')
+            ->json('GET', '/api/v1/teachers?paginate=false')
+            ->assertStatus(200)
+            ->assertJsonStructure([
+                'data' => [['id',
+                'code',
+                'state',
+                'speciality_id',
+                'created_at',
+                'updated_at'
+                    ]
+            ]])->assertJsonMissing([
+                'current_page',
+                'first_page_url',
+                'from',
+                'last_page',
+                'last_page_url',
+                'next_page_url',
+                'path',
+                'per_page',
+                'prev_page_url',
+                'to',
+                'total'
+            ]);
+    }
+
+    /**
+     * Api show an user for authorized users correctly without pagination.
+     *
+     * @group failing1
+     * @test
+     */
+    public function api1()
+    {
+        seed_teachers();
+        $this->signInAsStaffManager('api')
+            ->json('GET', '/api/v1/teachers?paginate=false')
+            ->dump()
+            ->assertStatus(200);
+
+    }
+
 }
+
