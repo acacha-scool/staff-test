@@ -89,7 +89,7 @@ class ScoolStaffTest extends TestCase
 
     /**
      * Api show an user for authorized users correctly.
-     *
+     * @group prova
      * @test
      */
     public function api_show_an_user_for_authorized_users_correctly()
@@ -98,15 +98,18 @@ class ScoolStaffTest extends TestCase
             ->json('GET', '/api/v1/teachers')
             ->assertStatus(200)
             ->assertJson([
-                'current_page' => 1,
                 'data' => [],
-                'from' => null,
-                'last_page' => 1,
-                'next_page_url' => null,
-                'per_page' => 15,
-                'prev_page_url' => null,
-                'to' => null,
-                'total' => 0
+                'meta' => [
+                    'current_page' => 1,
+                    'from' => null,
+                    'last_page' => 1,
+                    'per_page' => 15,
+                    'to' => null,
+                ],
+                'links' => [
+                    'prev' => null,
+                    'next' => null,
+                ]
             ]);
     }
 
@@ -122,16 +125,18 @@ class ScoolStaffTest extends TestCase
             ->json('GET', '/api/v1/teachers')
             ->assertStatus(200)
             ->assertJson([
-                'current_page' => 1,
                 'data' => [],
-                'from' => 1,
-                'last_page' => 1,
-                'first_page_url' => 'http://localhost/api/v1/teachers?page=1',
-                'next_page_url' => null,
-                'per_page' => 15,
-                'prev_page_url' => null,
-                'to' => 5,
-                'total' => 5
+                'meta' => [
+                    'current_page' => 1,
+                    'from' => 1,
+                    'last_page' => 1,
+                    'per_page' => 15,
+                    'to' => 8,
+                ],
+                'links' => [
+                    'prev' => null,
+                    'next' => null,
+                ]
             ]);
     }
 
@@ -151,7 +156,13 @@ class ScoolStaffTest extends TestCase
                     'id',
                     'code',
                     'state',
-                    'speciality_id',
+                    'user',
+                    'vacancy',
+                    'specialities',
+                    'administrative_status_id',
+                    'administrative_start_year',
+                    'opossitions_pass_year',
+                    'start_date',
                     'created_at',
                     'updated_at'
                 ]]
@@ -160,7 +171,7 @@ class ScoolStaffTest extends TestCase
 
     /**
      * Api show an user for authorized users correctly without pagination.
-     * @group prova
+     *
      * @test
      */
     public function api_show_an_user_for_authorized_users_correctly_without_pagination()
@@ -173,19 +184,13 @@ class ScoolStaffTest extends TestCase
                 'data' => [['id',
                 'code',
                 'state',
-                'speciality' => [
-                    'id',
-                    'code',
-                    'name',
-                    'created_at',
-                    'updated_at'
-                ],
-                'positions' => [[
-                    'id',
-                    'name',
-                    'created_at',
-                    'updated_at'
-                ]],
+                'specialities',
+                'vacancy',
+                'specialities',
+                'administrative_status_id',
+                'administrative_start_year',
+                'opossitions_pass_year',
+                'start_date',
                 'created_at',
                 'updated_at'
                     ]
@@ -207,6 +212,7 @@ class ScoolStaffTest extends TestCase
     /**
      * Api show an user for authorized users correctly without pagination.
      *
+     * @group caca
      * @test
      */
     public function api1()

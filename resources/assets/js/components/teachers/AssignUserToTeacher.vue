@@ -1,6 +1,6 @@
 <template>
     <div>
-        <teachers-chooser v-on:teacherHasBeenSelected="teacherHasBeenSelected"></teachers-chooser>
+        <vacancies-chooser v-on:vacancyHasBeenSelected="vacancyHasBeenSelected"></vacancies-chooser>
         <users-chooser v-if="showUserChooser" v-on:userHasBeenSelected="userHasBeenSelected"></users-chooser>
         <br/>
         <div style="text-align: center;">
@@ -14,30 +14,30 @@
 <script>
 
   import UsersChooser from '../users/UsersChooser.vue'
-  import TeachersChooser from './TeachersChooser.vue'
+  import VacanciesChooser from './VacanciesChooser.vue'
   import Form from 'acacha-forms'
 
   export default {
     components: {
       UsersChooser,
-      TeachersChooser,
+      VacanciesChooser,
     },
     data () {
       return {
         showUserChooser: false,
-        teacherId: null,
+        vacancyId: null,
         form: new Form({ userId: null})
       }
     },
     methods: {
       isAssignDisabled() {
-        if (this.teacherId && this.form.userId) return false
+        if (this.vacancyId && this.form.userId) return false
         return true
       },
-      teacherHasBeenSelected(teacher) {
+      teacherHasBeenSelected(vacancy) {
         if (teacher) {
           this.showUserChooser = true
-          this.teacherId = teacher
+          this.vacancyId = vacancy
         }
       },
       userHasBeenSelected(user) {
@@ -47,7 +47,7 @@
         this.submit()
       },
       submit() {
-        this.form.post('/teacher/' + this.teacherId + '/user')
+        this.form.post('/teacher/' + this.vacancyId + '/user')
           .then( response => {
             console.log('done!')
             //do what you need to do if register is ok
