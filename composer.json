@@ -20,7 +20,8 @@
         "laravel/tinker": "~1.0",
         "scool/curriculum": "dev-master",
         "scool/ebre_escool_model": "dev-master",
-        "scool/foundation": "dev-master"
+        "scool/foundation": "dev-master",
+        "scool/untis": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

@@ -45,6 +45,12 @@ return [
             'prefix' => '',
         ],
 
+        'untis' => [
+            'driver' => 'sqlite',
+            'database' => env('DB_DATABASE_UNTIS', '/home/sergi/Code/acacha-scool/untis/untis-test/database/database.sqlite'),
+            'prefix' => '',
+        ],
+
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),

@@ -1,6 +1,7 @@
 {
     "version": 2,
     "paths": [
+        "../../untis/untis",
         "/home/sergi/Code/acacha-scool/curriculum/curriculum",
         "/home/sergi/Code/acacha-scool/foundation/foundation",
         "/home/sergi/Code/acacha-scool/staff/staff",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ddd85a67488179759e167af5daa5e9f9",
+    "content-hash": "79c8461b2819c244135e898af3b9eccb",
     "packages": [
         {
             "name": "acacha-scool/staff",
@@ -3478,6 +3478,79 @@
             ]
         },
         {
+            "name": "scool/untis",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../../untis/untis",
+                "reference": "8f189c11d9eaac565f84b29f6ac22dc25e109cb2",
+                "shasum": null
+            },
+            "require": {
+                "php": "~5.6|~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.4.3",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Scool\\Untis\\Providers\\UntisServiceProvider"
+                    ],
+                    "aliases": {
+                        "ScoolStaff": "Scool\\Untis\\Untis"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Scool\\Untis\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Scool\\Untis\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "check-style": [
+                    "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+                ],
+                "fix-style": [
+                    "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergi Tur Badenas",
+                    "email": "sergiturbadenas@gmail.com",
+                    "homepage": "https://github.com/acacha",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel package for Untis software",
+            "homepage": "https://github.com/scool/untis",
+            "keywords": [
+                "scool",
+                "untis",
+                "untis"
+            ]
+        },
+        {
             "name": "spatie/laravel-permission",
             "version": "2.5.1",
             "source": {
@@ -6346,7 +6419,8 @@
         "acacha/users": 20,
         "scool/curriculum": 20,
         "scool/ebre_escool_model": 20,
-        "scool/foundation": 20
+        "scool/foundation": 20,
+        "scool/untis": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
