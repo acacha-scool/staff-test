@@ -36,7 +36,6 @@ class ScoolStaffTeachersTest extends TestCase
      */
     public function test_authorization_for_uri_assign_user_to_teacher()
     {
-//        dd('PROVA');
         $this->check_authorization_uri('/teachers/{id}/user');
     }
 
@@ -89,7 +88,7 @@ class ScoolStaffTeachersTest extends TestCase
     }
 
     /**
-     * Api show an user for authorized users correctly.
+     * Api show teachers for authorized users correctly.
      *
      * @test
      */
