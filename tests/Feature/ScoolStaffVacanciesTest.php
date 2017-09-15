@@ -227,7 +227,7 @@ class ScoolStaffVacanciesTest extends TestCase
 
     /**
      * Api validates on update vacancies for authorized users correctly.
-     * @group w
+     *
      * @test
      */
     public function api_validates_on_update_vacancies_for_authorized_users_correctly()
