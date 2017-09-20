@@ -42,16 +42,26 @@ class SeedVacancies extends Command
      */
     public function handle()
     {
+        seed_departments();
         //Una vacante tiene que tener horarios Obtener los profes que tienen horario
         $profesores = Profesor::has('horarios')->whereNotNull('especialidad')->orderBy('especialidad')->get();
-        $lastEspecialidad = null;
-        $counter = 1;
+
+        $departmentCounters = [];
         foreach ($profesores as $profesor) {
-            if ($lastEspecialidad === $profesor->especialidad) $counter++;
-            else $counter = 1;
-            $code = $profesor->especialidad . '_' . $counter;
-            print('vacancy_first_or_create("' . $code . '", obtainSpecialityIdByCode("' . $profesor->especialidad . '"), "active");' . "\n");
-            $lastEspecialidad = $profesor->especialidad;
+            $currentDepartment = obtainDepartmentIdBySpecialityCode($profesor->especialidad);
+            if ( array_key_exists ( $currentDepartment , $departmentCounters ) ) {
+                $departmentCounters[$currentDepartment] = $departmentCounters[$currentDepartment] + 1;
+            }  else {
+                $departmentCounters[$currentDepartment] = 1;
+            }
+
+
+            $speciality = 'obtainSpecialityIdByCode("' . $profesor->especialidad . '")';
+            $department = 'obtainDepartmentIdByEspecialityCode("' . $profesor->especialidad . '")';
+            $order = $departmentCounters[$currentDepartment];
+            $owner = 'obtainTeacherIdByCode("' . $profesor->codigo . '")';
+            $state = '"assigned"';
+            print('vacancy_first_or_create( ' . $speciality . ', ' . $department . ', ' . $order . ', ' . $owner . ', ' . $state . ');' . "\n");
         }
     }
 
