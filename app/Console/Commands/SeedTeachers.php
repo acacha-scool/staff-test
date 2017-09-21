@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Console\Commands\Traits\ObtainsUserDataFromTeacherCodeTrait;
 use Illuminate\Console\Command;
-use ObtainsUserDataFromTeacherCode;
 use Scool\Untis\Models\Profesor;
 
 /**
@@ -13,7 +13,7 @@ use Scool\Untis\Models\Profesor;
  */
 class SeedTeachers extends Command
 {
-    use ObtainsUserDataFromTeacherCode;
+    use ObtainsUserDataFromTeacherCodeTrait;
 
     /**
      * The name and signature of the console command.
