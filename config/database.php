@@ -45,6 +45,21 @@ return [
             'prefix' => '',
         ],
 
+        'mysql_testing' => [
+            'driver' => 'mysql',
+            'host' => '127.0.0.1',
+            'port' => '3306',
+            'database' => 'staff_test',
+            'username' => 'debian-sys-maint',
+            'password' => 'NEhcL1w1W6ndDc6P',
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'untis' => [
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE_UNTIS', '/home/sergi/Code/acacha-scool/untis/untis-test/database/database.sqlite'),

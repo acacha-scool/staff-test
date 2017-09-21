@@ -79,9 +79,11 @@ class ScoolStaffVacanciesTest extends TestCase
             ->assertJsonStructure([
                 'data' => [['id',
                     'id',
-                    'code',
-                    'state',
                     'speciality_id',
+                    'department_id',
+                    'order',
+                    'owner',
+                    'state',
                     'created_at',
                     'updated_at'
                 ]
@@ -152,13 +154,17 @@ class ScoolStaffVacanciesTest extends TestCase
      */
     public function api_creates_vacancies_for_authorized_users_correctly()
     {
-        $speciality  = first_or_create_speciality('CAS' , 'Curs Accés Grau Superior', '');
+        seed_teachers();
+        seed_departments();
 
         $vacancy = [
-            'code' => 'LLE_1',
-            'state' => 'pending',
-            'speciality_id' => $speciality->id
+            'speciality_id' => obtainSpecialityIdByCode('CAS'),
+            'department_id' => $deparment = obtainDepartmentIdByEspecialityCode('CAS'),
+            'order' => 1,
+            'owner' => $teacher = obtainTeacherIdByCode('02'),
+            'state' =>  'pending'
         ];
+
         $this->signInAsStaffManager('api')
             ->json('POST', '/api/v1/vacancies/', $vacancy)
             ->assertStatus(201)
@@ -187,12 +193,19 @@ class ScoolStaffVacanciesTest extends TestCase
             ->assertJson( [
                 'message' => 'The given data was invalid.',
                 'errors' => [
-                    'code' => [
-                        'The code field is required.'
-                    ],
                     'speciality_id' => [
-                        "The speciality id field is required."
+                        'The speciality id field is required.'
+                    ],
+                    "department_id" => [
+                        "The department id field is required."
+                    ],
+                    "order" => [
+                        "The order field is required."
+                    ],
+                    "owner" => [
+                        "The owner field is required."
                     ]
+
                 ]
             ]);
 
@@ -206,14 +219,25 @@ class ScoolStaffVacanciesTest extends TestCase
      */
     public function api_updates_vacancies_for_authorized_users_correctly()
     {
-        first_or_create_speciality('CAS' , 'Curs Accés Grau Superior', '');
-        $newSpeciality = first_or_create_speciality('AN' ,  'Anglès', '');
-        $vacancy = vacancy_first_or_create('LLE_1', 'pending', obtainSpecialityIdByCode('CAS'));
+        seed_teachers();
+        seed_departments();
+        first_or_create_speciality('CAS' , 'Curs Accés Grau Superior', '','');
+        $newSpeciality = first_or_create_speciality('AN' ,  'Anglès', '','');
+        $vacancy = vacancy_first_or_create(
+            obtainSpecialityIdByCode('CAS'),
+            $deparment = obtainDepartmentIdByEspecialityCode('CAS'),
+            1,
+            $teacher = obtainTeacherIdByCode('02'),
+            "assigned"
+        );
+
         $this->assertDatabaseHas('vacancies', [ 'id' => $vacancy->id ]);
         $newVacancy = [
-            'code' => 'LLE_1_MOD',
+            'speciality_id' => $newSpeciality->id,
+            'department_id' => $deparment,
+            'order' => '1',
+            'owner' => $teacher,
             'state' => 'active',
-            'speciality_id' => $newSpeciality->id
         ];
         $this->signInAsStaffManager('api')
             ->json('PUT', '/api/v1/vacancies/' . $vacancy->id, $newVacancy)
@@ -232,30 +256,39 @@ class ScoolStaffVacanciesTest extends TestCase
      */
     public function api_validates_on_update_vacancies_for_authorized_users_correctly()
     {
-        first_or_create_speciality('CAS' , 'Curs Accés Grau Superior', '');
-        $vacancy = vacancy_first_or_create('LLE_1', 'pending', obtainSpecialityIdByCode('CAS'));
+        seed_teachers();
+        seed_departments();
+        first_or_create_speciality('CAS' , 'Curs Accés Grau Superior', '','');
+        $vacancy = vacancy_first_or_create(
+            obtainSpecialityIdByCode('CAS'),
+            $deparment = obtainDepartmentIdByEspecialityCode('CAS'),
+            1,
+            $teacher = obtainTeacherIdByCode('02'),
+            "assigned"
+        );
         $this->assertDatabaseHas('vacancies', [ 'id' => $vacancy->id ]);
         $newVacancy = [
-            'code' => '',
-            'state' => '',
-            'speciality_id' => ''
+
         ];
         $this->signInAsStaffManager('api')
             ->json('PUT', '/api/v1/vacancies/' . $vacancy->id, $newVacancy)
             ->assertStatus(422)
+
             ->assertJson( [
                 'message' => 'The given data was invalid.',
                 'errors' => [
-                    'code' => [
-                        'The code field is required.'
-                    ],
                     'speciality_id' => [
-                        "The speciality id field is required."
+                        'The speciality id field is required.'
+                    ],
+                    'department_id' => [
+                        "The department id field is required."
+                    ],
+                    'owner' => [
+                        "The owner field is required."
                     ]
                 ]
             ]);
 
-        $this->assertDatabaseMissing('vacancies', $newVacancy);
     }
 
     /**
@@ -265,8 +298,15 @@ class ScoolStaffVacanciesTest extends TestCase
      */
     public function api_deletes_vacancies_for_authorized_users_correctly()
     {
-        first_or_create_speciality('CAS' , 'Curs Accés Grau Superior', '');
-        $vacancy = vacancy_first_or_create('LLE_1', 'pending', obtainSpecialityIdByCode('CAS'));
+        seed_departments();
+        seed_teachers();
+        $vacancy = vacancy_first_or_create(
+            obtainSpecialityIdByCode('CAS'),
+            $deparment = obtainDepartmentIdByEspecialityCode('CAS'),
+            1,
+            $teacher = obtainTeacherIdByCode('02'),
+            "assigned"
+        );
         $this->assertDatabaseHas('vacancies', [ 'id' => $vacancy->id ]);
         $this->signInAsStaffManager('api')
             ->json('DELETE', '/api/v1/vacancies/' . $vacancy->id)

@@ -114,11 +114,11 @@ class ScoolStaffTeachersTest extends TestCase
     }
 
     /**
-     * Api show an user for authorized users correctly after seeding.
+     * Api show teachers for authorized users correctly after seeding.
      *
      * @test
      */
-    public function api_show_an_user_for_authorized_users_correctly_after_seeding()
+    public function api_show_teachers_for_authorized_users_correctly_after_seeding()
     {
         seed_teachers();
         $this->signInAsStaffManager('api')
@@ -129,23 +129,23 @@ class ScoolStaffTeachersTest extends TestCase
                 'meta' => [
                     'current_page' => 1,
                     'from' => 1,
-                    'last_page' => 1,
+                    'last_page' => 8,
                     'per_page' => 15,
-                    'to' => 8,
+                    'to' => 15,
                 ],
                 'links' => [
                     'prev' => null,
-                    'next' => null,
+                    'next' => 'http://localhost/api/v1/teachers?page=2',
                 ]
             ]);
     }
 
     /**
-     * Api show an user for authorized users correctly after seeding with structure.
+     * Api show a teacher for authorized users correctly after seeding with structure.
      *
      * @test
      */
-    public function api_show_an_user_for_authorized_users_correctly_after_seeding_with_structure()
+    public function api_show_a_teacher_for_authorized_users_correctly_after_seeding_with_structure()
     {
         seed_teachers();
         $this->signInAsStaffManager('api')

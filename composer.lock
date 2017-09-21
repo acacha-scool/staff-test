@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "79c8461b2819c244135e898af3b9eccb",
+    "content-hash": "860e9eca1a5f18bad444fec272b7018e",
     "packages": [
         {
             "name": "acacha-scool/staff",
@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "/home/sergi/Code/acacha-scool/staff/staff",
-                "reference": "d8c5ca4ef75b2e5b45181935af3bac3bd34f6270",
+                "reference": "83b91e222acc4c7ea33db18e4da15ec4bbc56cf5",
                 "shasum": null
             },
             "require": {
@@ -516,16 +516,16 @@
         },
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.0.1",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "bce341e3194bbeffa60ac782d645067557f5075e"
+                "reference": "01a859752094e00aa8548832312366753272f8af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/bce341e3194bbeffa60ac782d645067557f5075e",
-                "reference": "bce341e3194bbeffa60ac782d645067557f5075e",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/01a859752094e00aa8548832312366753272f8af",
+                "reference": "01a859752094e00aa8548832312366753272f8af",
                 "shasum": ""
             },
             "require": {
@@ -580,7 +580,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2017-08-29T08:54:25+00:00"
+            "time": "2017-09-18T13:32:46+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1330,16 +1330,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.24",
+            "version": "v0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client-services.git",
-                "reference": "3e90db2d96265bbe1f3e855f9558e6bb12ae2dc6"
+                "reference": "a94763c82a4325a6529feaa0a1f5fd1c289c8f68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/3e90db2d96265bbe1f3e855f9558e6bb12ae2dc6",
-                "reference": "3e90db2d96265bbe1f3e855f9558e6bb12ae2dc6",
+                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/a94763c82a4325a6529feaa0a1f5fd1c289c8f68",
+                "reference": "a94763c82a4325a6529feaa0a1f5fd1c289c8f68",
                 "shasum": ""
             },
             "require": {
@@ -1363,7 +1363,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2017-09-13T20:25:35+00:00"
+            "time": "2017-09-16T00:23:43+00:00"
         },
         {
             "name": "google/auth",
@@ -1791,16 +1791,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.4",
+            "version": "v5.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d3e0493bead126cf7fb9a005c64e6b58a9190e51"
+                "reference": "a0fdfd2c90318c107b6a8d69189ec9a6607379e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d3e0493bead126cf7fb9a005c64e6b58a9190e51",
-                "reference": "d3e0493bead126cf7fb9a005c64e6b58a9190e51",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a0fdfd2c90318c107b6a8d69189ec9a6607379e3",
+                "reference": "a0fdfd2c90318c107b6a8d69189ec9a6607379e3",
                 "shasum": ""
             },
             "require": {
@@ -1919,7 +1919,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-09-13T13:36:29+00:00"
+            "time": "2017-09-20T13:45:36+00:00"
         },
         {
             "name": "laravel/passport",
@@ -3290,7 +3290,7 @@
             "dist": {
                 "type": "path",
                 "url": "/home/sergi/Code/acacha-scool/curriculum/curriculum",
-                "reference": "0eb3cbd9ebf9170f587b7a9777335f50a999521b",
+                "reference": "3ab0b13b3627032039b190183314ab8af40e8f8e",
                 "shasum": null
             },
             "require": {
