@@ -4,7 +4,8 @@ namespace Tests\Browser;
 
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 /**
  * Class TeachersWizardTest.
@@ -13,17 +14,17 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
  */
 class TeachersWizardTest extends DuskTestCase
 {
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     /**
-     * A Dusk test example.
+     * See teacher wizard.
      *
      * @return void
      */
     public function testExample()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
+            $browser->visit('/teacher')
                     ->assertSee('Laravel');
         });
     }
